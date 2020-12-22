@@ -9,11 +9,12 @@ var result = "";
 function clickHandler() {   
     difference = cashamount.value - billamount.value;
     console.log(difference);
-    for(var i =0; notes.length; i++){
-        if(difference > notes[i]){
-            result = notes[i] + ",";
+    for(var i = 0; notes.length; i++){
+        if(difference >= notes[i]){
+            console.log(notes[i]);
         }
     }
+    console.log("working");
 }
 
 button.addEventListener('click', clickHandler);
