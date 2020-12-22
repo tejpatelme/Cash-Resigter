@@ -1,2 +1,2 @@
-# cash-register
+# Cash Register
  
