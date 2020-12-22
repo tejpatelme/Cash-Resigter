@@ -14,9 +14,6 @@ function clickHandler() {
             result = notes[i] + ",";
         }
     }
-    console.log("working");
 }
-
-
 
 button.addEventListener('click', clickHandler);
