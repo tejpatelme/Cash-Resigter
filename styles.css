@@ -45,8 +45,20 @@ button {
     padding: 1rem;
 }
 
+.container .message {
+    display: none;
+    padding: .4rem;
+    background-color: red;
+    color : white;
+    border-radius: 8px;
+    max-width: 420px;
+    text-align: left;
+    margin: auto auto 16px auto;
+}
+
 .container h2{
     margin-bottom: 16px;
+    color: #424242;
 }
 
 .container .cashamtdiv,.outputdiv{
@@ -59,7 +71,7 @@ button {
 }
 
 .outputdiv table,td,th {
-    border: 1px solid black;
+    border: 1px solid #424242;
     padding: 1rem;
 }
 
