@@ -3,8 +3,8 @@ var cashamount = document.querySelector("#cashAmt");
 var button = document.querySelector("#button");
 var nextbutton = document.querySelector("#nextbtn");
 var cashamountdiv = document.querySelector(".cashamtdiv");
-var output = document.querySelector(".output");
 var outputDiv = document.querySelector(".outputdiv");
+var output = document.querySelector(".output");
 var cell1 = document.querySelector(".cell1");
 var cell2 = document.querySelector(".cell2");
 var message = document.querySelector(".message");
@@ -75,29 +75,32 @@ function clickHandler() {
         }
     }
     
-    var inputamount = parseInt(billamount.value);
-    var cashpaid = parseInt(cashamount.value);
-    var difference = cashpaid - inputamount;
-    if(cashpaid===0){
-        showmessage("Please enter an amount greater than zero");
-    }
-    else if(cashpaid < inputamount) {
-        showmessage("Cash paid can't be less than bill amount");
-    }
-    else {
-        if(inputamount === cashpaid){
-            showmessage("No cash needs to be returned");
+    if(Number(cashamount.value)>0 && Number.isInteger(Number(cashamount.value))  && billamount.value != ""){
+        var inputamount = parseInt(billamount.value);
+        var cashpaid = parseInt(cashamount.value);
+        var difference = cashpaid - inputamount;
+        if(cashpaid < inputamount) {
+            showmessage("Cash paid can't be less than bill amount");
         }
         else {
-            hidemessage();
-            outputDiv.style.display = "block";
-            for (var i = 0; i < notes.length; i++) {
-                if (difference > 0) {
-                    difference = calculatenotes(notes[i], difference);
-                }
+            if(inputamount === cashpaid){
+                showmessage("No cash needs to be returned");
             }
+            else {
+                hidemessage();
+                outputDiv.style.display = "block";
+                for (var i = 0; i < notes.length; i++) {
+                    if (difference > 0) {
+                        difference = calculatenotes(notes[i], difference);
+                    }
+                }
+        }
+        }
     }
+    else {
+        showmessage("Please enter a valid amount");
     }
+
     click++;
 }
 
