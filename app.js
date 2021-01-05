@@ -32,7 +32,13 @@ function calculatenotes(note,balance){
 }
 
 function showInput(){
-    cashamountdiv.style.display = "block";
+    if(Number.isInteger(Number(billamount.value))>0){
+        cashamountdiv.style.display = "block";
+    }
+    else {
+        alert("enter a valid amount");
+    }
+    
 }
 
 function clickHandler() {  
