@@ -23,7 +23,7 @@ function generateTable(note,noofnotes){
 }
 
 //Function to calcualte number of notes
-function calculatenotes(note,balance){
+function calculateNotes(note,balance){
     var noofnotes = Math.floor(balance/note);
     console.log(note, noofnotes);
     if (noofnotes >= 1) {
@@ -37,24 +37,24 @@ function calculatenotes(note,balance){
 //Function that gets executed when next button clicked
 function showInput(){
     if(Number(billamount.value)>0 && Number.isInteger(Number(billamount.value))  && billamount.value != ""){
-        hidemessage();
+        hideMessage();
         cashamountdiv.style.display = "block";
     }
     else {
-        showmessage("Please enter a valid amount");
+        showMessage("Please enter a valid amount");
     }
     
 }
 
 //Function used to show messages to user
-function showmessage(text){
+function showMessage(text){
     message.style.display = "block";
     message.innerHTML = text;
     outputDiv.style.display = "none";
 }
 
 //Function to hide message
-function hidemessage() {
+function hideMessage() {
     message.style.display = "none";
 }
 
@@ -80,25 +80,25 @@ function clickHandler() {
         var cashpaid = parseInt(cashamount.value);
         var difference = cashpaid - inputamount;
         if(cashpaid < inputamount) {
-            showmessage("Cash paid can't be less than bill amount");
+            showMessage("Cash paid can't be less than bill amount");
         }
         else {
             if(inputamount === cashpaid){
-                showmessage("No cash needs to be returned");
+                showMessage("No cash needs to be returned");
             }
             else {
-                hidemessage();
+                hideMessage();
                 outputDiv.style.display = "block";
                 for (var i = 0; i < notes.length; i++) {
                     if (difference > 0) {
-                        difference = calculatenotes(notes[i], difference);
+                        difference = calculateNotes(notes[i], difference);
                     }
                 }
         }
         }
     }
     else {
-        showmessage("Please enter a valid amount");
+        showMessage("Please enter a valid amount");
     }
 
     click++;
