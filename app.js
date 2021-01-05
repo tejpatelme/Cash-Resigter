@@ -10,8 +10,9 @@ var cell2 = document.querySelector(".cell2");
 var message = document.querySelector(".message");
 
 var notes = [2000,500,100,20,10,5,1];
+var click = 1;
 
-
+//Function to dynamically generate table of notes
 function generateTable(note,noofnotes){
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -21,6 +22,7 @@ function generateTable(note,noofnotes){
     cell2.appendChild(td2);
 }
 
+//Function to calcualte number of notes
 function calculatenotes(note,balance){
     var noofnotes = Math.floor(balance/note);
     console.log(note, noofnotes);
@@ -32,8 +34,9 @@ function calculatenotes(note,balance){
     return balance;
 }
 
+//Function that gets executed when next button clicked
 function showInput(){
-    if(Number.isInteger(Number(billamount.value))>0){
+    if(Number(billamount.value)>0 && Number.isInteger(Number(billamount.value))  && billamount.value != ""){
         hidemessage();
         cashamountdiv.style.display = "block";
     }
@@ -43,17 +46,35 @@ function showInput(){
     
 }
 
+//Function used to show messages to user
 function showmessage(text){
     message.style.display = "block";
     message.innerHTML = text;
     outputDiv.style.display = "none";
 }
 
+//Function to hide message
 function hidemessage() {
     message.style.display = "none";
 }
 
+
+//Function that gets executed after calculate button is clicked
 function clickHandler() {  
+    console.log(click);
+    //Condition to check of calculate button is pressed again without refreshing the page
+    //If it is then delete the cells of the table
+    if(click > 1) {
+        var cell1len = cell1.cells.length;
+        var cell2len = cell2.cells.length;
+        for(var i = 0; i < cell1len -1 ; i++){
+            cell1.cells[1].remove();
+        }
+        for(var i = 0; i < cell2len - 1; i++){
+            cell2.cells[1].remove();
+        }
+    }
+    
     var inputamount = parseInt(billamount.value);
     var cashpaid = parseInt(cashamount.value);
     var difference = cashpaid - inputamount;
@@ -77,6 +98,7 @@ function clickHandler() {
             }
     }
     }
+    click++;
 }
 
 nextbutton.addEventListener('click', showInput);

@@ -39,7 +39,6 @@ button {
 
 .container {
     max-width: 620px;
-    background-color: white;
     border-radius: 16px;
     margin: auto;
     padding: 1rem;
@@ -68,11 +67,13 @@ button {
 .outputdiv table {
     border-collapse: collapse;
     border-radius: 16px;
+    max-width: 620px;
+    width: 100%;
 }
 
 .outputdiv table,td,th {
     border: 1px solid #424242;
-    padding: 1rem;
+    padding: 0.2rem;
 }
 
 .outputdiv th{
