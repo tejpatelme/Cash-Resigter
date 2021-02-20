@@ -1,21 +1,21 @@
-var billamount = document.querySelector("#billAmt");
-var cashamount = document.querySelector("#cashAmt");
-var button = document.querySelector("#button");
-var nextbutton = document.querySelector("#nextbtn");
-var cashamountdiv = document.querySelector(".cashamtdiv");
-var outputDiv = document.querySelector(".outputdiv");
-var output = document.querySelector(".output");
-var cell1 = document.querySelector(".cell1");
-var cell2 = document.querySelector(".cell2");
-var message = document.querySelector(".message");
+const billamount = document.querySelector("#billAmt");
+const cashamount = document.querySelector("#cashAmt");
+const button = document.querySelector("#button");
+const nextbutton = document.querySelector("#nextbtn");
+const cashamountdiv = document.querySelector(".cashamtdiv");
+const outputDiv = document.querySelector(".outputdiv");
+const output = document.querySelector(".output");
+const cell1 = document.querySelector(".cell1");
+const cell2 = document.querySelector(".cell2");
+const message = document.querySelector(".message");
 
-var notes = [2000,500,100,20,10,5,1];
-var click = 1;
+const notes = [2000,500,100,20,10,5,1];
+let click = 1;
 
 //Function to dynamically generate table of notes
 function generateTable(note,noofnotes){
-    var td1 = document.createElement('td');
-    var td2 = document.createElement('td');
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
     td1.innerHTML = noofnotes;
     td2.innerHTML = note;
     cell1.appendChild(td1);
@@ -24,7 +24,7 @@ function generateTable(note,noofnotes){
 
 //Function to calcualte number of notes
 function calculateNotes(note,balance){
-    var noofnotes = Math.floor(balance/note);
+    const noofnotes = Math.floor(balance/note);
     console.log(note, noofnotes);
     if (noofnotes >= 1) {
         balance = balance - noofnotes*note;
@@ -65,20 +65,20 @@ function clickHandler() {
     //Condition to check of calculate button is pressed again without refreshing the page
     //If it is then delete the cells of the table
     if(click > 1) {
-        var cell1len = cell1.cells.length;
-        var cell2len = cell2.cells.length;
-        for(var i = 0; i < cell1len -1 ; i++){
+        const cell1len = cell1.cells.length;
+        const cell2len = cell2.cells.length;
+        for(let i = 0; i < cell1len -1 ; i++){
             cell1.cells[1].remove();
         }
-        for(var i = 0; i < cell2len - 1; i++){
+        for(let i = 0; i < cell2len - 1; i++){
             cell2.cells[1].remove();
         }
     }
     
     if(Number(cashamount.value)>0 && Number.isInteger(Number(cashamount.value))  && billamount.value != ""){
-        var inputamount = parseInt(billamount.value);
-        var cashpaid = parseInt(cashamount.value);
-        var difference = cashpaid - inputamount;
+        const inputamount = parseInt(billamount.value);
+        const cashpaid = parseInt(cashamount.value);
+        let difference = cashpaid - inputamount;
         if(cashpaid < inputamount) {
             showMessage("Cash paid can't be less than bill amount");
         }
@@ -89,7 +89,7 @@ function clickHandler() {
             else {
                 hideMessage();
                 outputDiv.style.display = "block";
-                for (var i = 0; i < notes.length; i++) {
+                for (let i = 0; i < notes.length; i++) {
                     if (difference > 0) {
                         difference = calculateNotes(notes[i], difference);
                     }
